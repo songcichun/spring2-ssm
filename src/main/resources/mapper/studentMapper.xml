@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ryit.mapper.StudentMapper">
+
+    <sql id="find">select * from ssm.student </sql>
+
+    <sql id="delete">delete from  ssm.student </sql>
+
+
+    <select id="findAll" resultType="student">
+        <include refid="find"></include>
+    </select>
+
+    <select id="find" parameterType="int" resultType="student">
+        <include refid="find"></include> where id=#{id}
+    </select>
+
+    <select id="add" parameterType="student">
+        insert into ssm.student(name, sex, birth, department) value (#{name},#{sex},#{Birth},#{department})
+    </select>
+
+    <select id="delete" parameterType="int">
+        <include refid="delete"></include> with id=#{id}
+    </select>
+
+    <select id="update" parameterType="student">
+        update ssm.student set Name=#{name}  where  id=#{id}
+    </select>
+
+</mapper>

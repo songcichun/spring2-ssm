@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ryit.mapper.ScoreMapper">
+    <sql id="select"> select * from ssm.score </sql>
+    
+    <sql id="delete">delete from ssm.score</sql>
+
+    <select id="findAll" resultType="score">
+        <include refid="select"></include>
+    </select>
+
+    <select id="find" resultType="score" parameterType="int">
+        <include refid="select"></include> where id=#{id}
+    </select>
+
+    <select id="add" parameterType="score" resultType="Integer">
+        insert into ssm.score(stu_id, c_name, grade) VALUES(#{stu_id},#{c_name},#{grade})
+    </select>
+
+    <select id="delete" parameterType="int">
+        <include refid="delete"></include> where id=#{id}
+    </select>
+
+    <select id="update" parameterType="score">
+        update ssm.score set  C_name=#{c_name} , Stu_id=#{stu_id} , Grade=#{grade}  where Id=#{id}
+    </select>
+
+</mapper>
